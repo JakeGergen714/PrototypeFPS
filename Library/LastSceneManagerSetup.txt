@@ -1,0 +1,7 @@
+sceneSetups:
+- path: Assets/saving something.unity
+  isLoaded: 1
+  isActive: 1
+- path: Assets/ADG_Textures/Demo/DemoScene.unity
+  isLoaded: 1
+  isActive: 0
