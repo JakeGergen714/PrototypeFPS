@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class Gun
+    /*
+     * Gun with a recoil system.
+     */
+    public abstract class Gun : MonoBehaviour
     {
-        private int ammo;
-        private Stack unFiredRecoil = new Stack();
-        private Stack firedRecoil = new Stack();
+        private RecoilSystem recoilSystem;
+        protected Gun(RecoilSystem recoilSystem)
+        {
+            this.recoilSystem = recoilSystem;
+        }
+
+        public abstract bool shoot();
     }
 }

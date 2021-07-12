@@ -58,13 +58,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\BasicMovement.cs" />
+    <Compile Include="Assets\scripts\Bullet.cs" />
+    <Compile Include="Assets\scripts\Caliber.cs" />
+    <Compile Include="Assets\scripts\Glock.cs" />
     <Compile Include="Assets\scripts\Gun.cs" />
     <Compile Include="Assets\scripts\InputAxis.cs" />
     <Compile Include="Assets\scripts\InputKeys.cs" />
     <Compile Include="Assets\scripts\InputListener.cs" />
+    <Compile Include="Assets\scripts\Magazine.cs" />
+    <Compile Include="Assets\scripts\NineMillimeterBullet.cs" />
     <Compile Include="Assets\scripts\PlayerLook.cs" />
     <Compile Include="Assets\scripts\PlayerMovement.cs" />
     <Compile Include="Assets\scripts\PlayerShoot.cs" />
+    <Compile Include="Assets\scripts\RecoilInstant.cs" />
+    <Compile Include="Assets\scripts\RecoilSystem.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/Users/17149/Documents/BombShooter/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
