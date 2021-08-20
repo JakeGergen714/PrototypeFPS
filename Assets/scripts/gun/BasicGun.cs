@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.gun
 {
-    public class BasicGun : Component
+    public class BasicGun
     {
         private BasicShootBehavior basicShootBehavior = new BasicShootBehavior();
 

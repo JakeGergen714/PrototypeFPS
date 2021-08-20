@@ -58,15 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\gun\BasicGun.cs" />
-    <Compile Include="Assets\scripts\gun\bullet\BasicBulletPhysics.cs" />
-    <Compile Include="Assets\scripts\gun\bullet\Bullet.cs" />
+    <Compile Include="Assets\scripts\gun\bullet\BasicBullet.cs" />
     <Compile Include="Assets\scripts\gun\bullet\Caliber.cs" />
     <Compile Include="Assets\scripts\gun\recoil\RecoilInstant.cs" />
     <Compile Include="Assets\scripts\gun\recoil\RecoilSystem.cs" />
     <Compile Include="Assets\scripts\gun\shoot\BasicShootBehavior.cs" />
     <Compile Include="Assets\scripts\gun\shoot\ShootBehavior.cs" />
-    <Compile Include="Assets\scripts\player\PlayerLook.cs" />
-    <Compile Include="Assets\scripts\player\PlayerMovement.cs" />
+    <Compile Include="Assets\scripts\player\move\PlayerLook.cs" />
+    <Compile Include="Assets\scripts\player\move\PlayerMovement.cs" />
+    <Compile Include="Assets\scripts\player\shoot\PlayerShoot.cs" />
     <Compile Include="Assets\scripts\util\input\InputAxis.cs" />
     <Compile Include="Assets\scripts\util\input\InputKeys.cs" />
     <Compile Include="Assets\scripts\util\input\InputListener.cs" />

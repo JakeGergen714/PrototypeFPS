@@ -18,5 +18,10 @@ namespace DefaultNamespace
         {
             return Input.GetAxis(InputAxis.JUMP) > 0;
         }
+        
+        public static bool isShoot()
+        {
+            return Input.GetAxis(InputAxis.SHOOT) > 0;
+        }
     }
 }
