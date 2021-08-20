@@ -70,7 +70,6 @@
     <Compile Include="Assets\scripts\util\input\InputAxis.cs" />
     <Compile Include="Assets\scripts\util\input\InputKeys.cs" />
     <Compile Include="Assets\scripts\util\input\InputListener.cs" />
-    <Compile Include="Assets\scripts\util\unity\ProjectileSpawnUtil.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/Users/17149/Documents/BombShooter/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
