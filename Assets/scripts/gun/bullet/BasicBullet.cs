@@ -1,35 +1,30 @@
 ﻿using System;
+using DefaultNamespace.gun;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace DefaultNamespace
 {
-    public class BasicBullet : MonoBehaviour
-    {
-        private Rigidbody rigidbody;
+    public class BasicBullet : Bullet //implement bullet interface instead
+    { //use decorator pattern to chain bullet behaviors together. RisingBullet, WobblingBullet, DraggingBullet
+        public const float A_GAZZLION = long.MaxValue;
+        public const float LOFT = 10f;
+        public const float WOBBLE = 10f;
+        public const float MUZZLE_VEL = 10f;
+        public const float DRAG = 10f;
+        public const float OUCH_AMOUNT = A_GAZZLION;
 
-        public float loft = 100f;
-        public float wobble = 100f;
-        public float muzzleVel = 10000f;
-        public float drag = 10f;
-
-        private void Awake()
+        BasicBullet()
         {
-            gameObject.AddComponent<Rigidbody>();
-            rigidbody = gameObject.GetComponent<Rigidbody>();
+            loft = LOFT;
+            wobble = WOBBLE;
+            drag = DRAG;
+            muzzleVel = MUZZLE_VEL;
         }
 
-        private void Start()
+        public override float getAmountOfOuch()
         {
-            rigidbody.AddForce(transform.forward * muzzleVel);
-            rigidbody.AddForce(transform.up * loft);
-        }
-
-        private void FixedUpdate()
-        {
-            rigidbody.AddForce(transform.right * wobble);
-            Debug.Log("T: " + this.rigidbody.position);
-            wobble = wobble * -1; //sway bullet back and forth 
+            return OUCH_AMOUNT;
         }
     }
 }

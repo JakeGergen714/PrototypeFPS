@@ -21,7 +21,7 @@ namespace DefaultNamespace
         
         public static bool isShoot()
         {
-            return Input.GetAxis(InputAxis.SHOOT) > 0;
+            return Input.GetKey(InputKeys.MOUSE_0);
         }
     }
 }

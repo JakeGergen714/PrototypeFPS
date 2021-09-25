@@ -1,15 +1,14 @@
-﻿using DefaultNamespace.gun.shoot;
+﻿using System.Runtime.CompilerServices;
+using DefaultNamespace.gun.shoot;
 using UnityEngine;
 
 namespace DefaultNamespace.gun
 {
-    public class BasicGun
+    public class BasicGun : Gun
     {
-        private BasicShootBehavior basicShootBehavior = new BasicShootBehavior();
-
-        public void performShoot()
+        public override void initShootBehavior()
         {
-            basicShootBehavior.shoot();
+            basicShootBehavior = new BasicShootBehavior();
         }
     }
 }
