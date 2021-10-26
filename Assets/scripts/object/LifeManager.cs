@@ -4,9 +4,8 @@ namespace UnityEngine
 {
     public class LifeManager : MonoBehaviour
     {
-        private int timeTolive;
+        public int timeTolive;
         private int age = 0;
-        private GameObject life;
 
         public LifeManager setTimeToLive(int ttl)
         {

@@ -7,22 +7,19 @@ namespace player
 {
     public class PersonHitBox : MonoBehaviour
     {
-        private float damageMultipler;
-        private CapsuleCollider collider;
+        [SerializeField] private float damageMultipler;
+        [SerializeField] private CapsuleCollider collider;
 
-        public PersonHitBox(float damageMultipler, CapsuleCollider collider, PlayerHealth playerHealth)
+        private void Awake()
         {
-            this.damageMultipler = damageMultipler;
-            this.collider = collider;
+            collider = GetComponent<CapsuleCollider>();
         }
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.GetType() == typeof(IPersonOuchie))
-            {
-                IPersonOuchie thingThatOuched = (IPersonOuchie) other;
-                playerHealth.minus()
-            }
+            IPersonOuchie thingThatOuches = other.gameObject.GetComponent<IPersonOuchie>();
+            Debug.Log("I got ouched by this much: " + thingThatOuches.getAmountOfOuch() + " then multiplied it by this much: " +
+                      damageMultipler + " to get: " + thingThatOuches.getAmountOfOuch() * damageMultipler);
         }
     }
 }

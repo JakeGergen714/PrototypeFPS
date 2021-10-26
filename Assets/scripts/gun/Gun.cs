@@ -1,21 +1,24 @@
 ﻿using System;
-using DefaultNamespace.gun.shoot;
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 namespace DefaultNamespace.gun
 {
-    public abstract class Gun : MonoBehaviour//should be an interface
+    public class Gun : MonoBehaviour, IShoot
     {
-        protected ShootBehavior basicShootBehavior;
         private int FRAMES_BETWEEN_SHOTS = 10;
         private int shotCoolDown = 0;
+        private const float LOFT = 100F;
+        private const float WOBBLE = 0F;
+        private const float INITIAL_VEL = 10F;
+        private Recoil internalRecoil;
+        public Bullet prefab;
 
-        public Gun()
+        private void Awake()
         {
-            initShootBehavior();
+            internalRecoil = this.GetComponent<Recoil>();
         }
-
-        public abstract void initShootBehavior(); 
 
         private void FixedUpdate()
         {
@@ -30,18 +33,14 @@ namespace DefaultNamespace.gun
             return shotCoolDown == 0;
         }
 
-        public void performShoot()
+        public void shoot()
         {
             if (canShoot())
             {
-                if (basicShootBehavior == null)
-                {
-                    throw new ArgumentException(
-                        "basicShootBehavior not set. make sure sub class set basicShootBehavior in initShootBehavior()");
-                }
-
-                basicShootBehavior.shoot();
                 shotCoolDown = FRAMES_BETWEEN_SHOTS;
+                //I could make a static method inside of bullet that comes from an interface that accepts a prefab handles all of this. so bullet.instaite(prefab,...params)
+                Bullet g = GameObject.Instantiate(prefab, transform.position+transform.forward, transform.rotation);
+                g.setLoft(LOFT).setInitialVel(INITIAL_VEL).setWobble(WOBBLE).setDirectionOffset(internalRecoil.getRecoil());
             }
         }
     }

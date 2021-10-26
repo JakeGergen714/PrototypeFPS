@@ -7,17 +7,17 @@ namespace player.shoot
 {
     public class PlayerShoot : MonoBehaviour
     {
-        public Gun playerGun;
+        public IShoot playerWeapon;
 
         private void Awake()
         {
-            if (playerGun == null)
+            if (playerWeapon == null)
             {
-                playerGun = gameObject.AddComponent<BasicGun>();
+                playerWeapon = this.GetComponentInChildren<Gun>();
             }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             shoot();
         }
@@ -26,14 +26,13 @@ namespace player.shoot
         {
             if (InputListener.isShoot())
             {
-                Debug.Log("Shooting");
-                playerGun.performShoot();
+                playerWeapon.shoot();
             }
         }
 
-        public void setGun(Gun gun)
+        public void setGun(IShoot weapon)
         {
-            this.playerGun = gun;
+            this.playerWeapon = weapon;
         }
     }
 }

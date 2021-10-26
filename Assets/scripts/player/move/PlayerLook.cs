@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class PlayerLook : MonoBehaviour
         set { sensitivity = value; }
     }
     
-    [Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
+    [Range(0.1f, 9f)][SerializeField] float sensitivity = 20f;
     [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
     [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
 
@@ -26,6 +27,10 @@ public class PlayerLook : MonoBehaviour
 
         transform.localRotation = xQuat * yQuat; //Quaternions seem to rotate more consistently than EulerAngles. Sensitivity seemed to change slightly at certain degrees using Euler. transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
     }
-    
-       
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
