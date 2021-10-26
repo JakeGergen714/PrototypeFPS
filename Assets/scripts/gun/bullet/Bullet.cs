@@ -9,9 +9,9 @@ namespace DefaultNamespace
     public class Bullet : MonoBehaviour, IPersonOuchie
     {
         private Rigidbody rigidbody;
-        [SerializeField] private float wobble;
-        [SerializeField] private float loft;
-       [SerializeField] private float initialVel;
+        private float wobble;
+        private float loft;
+       private float initialVel;
         private Vector2 initialDirectionOffset;
         private bool wobbleDirection = false;
         [SerializeField] private float PERSON_OUCH_AMOUNT = 42;
@@ -43,7 +43,7 @@ namespace DefaultNamespace
                 rigidbody.AddForce(-transform.right * wobble);
                 wobbleDirection = true;
             }
-            Debug.DrawLine(transform.position, startPos);
+            Debug.DrawRay(transform.position, transform.up);
         }
 
         public Bullet setWobble(float wobble)

@@ -9,9 +9,9 @@ namespace DefaultNamespace.gun
     {
         private int FRAMES_BETWEEN_SHOTS = 10;
         private int shotCoolDown = 0;
-        private const float LOFT = 100F;
-        private const float WOBBLE = 0F;
-        private const float INITIAL_VEL = 10F;
+        [SerializeField] private float LOFT = 100F;
+        [SerializeField]private float WOBBLE = 0F;
+        [SerializeField]private float INITIAL_VEL = 10F;
         private Recoil internalRecoil;
         public Bullet prefab;
 

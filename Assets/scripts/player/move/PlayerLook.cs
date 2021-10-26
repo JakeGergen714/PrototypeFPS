@@ -17,7 +17,7 @@ public class PlayerLook : MonoBehaviour
     [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
 
     Vector2 rotation = Vector2.zero;
-    void FixedUpdate()
+    void Update()
     {
         rotation.x += Input.GetAxis(InputKeys.MOUSE_X_AXIS) * sensitivity;
         rotation.y += Input.GetAxis(InputKeys.MOUSE_Y_AXIS) * sensitivity;

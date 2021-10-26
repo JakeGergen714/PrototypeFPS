@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using player.health;
 using UnityEngine;
+using Object = System.Object;
 
 namespace player
 {
