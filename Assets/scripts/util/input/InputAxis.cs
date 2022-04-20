@@ -7,6 +7,7 @@
         public const string HORIZONTAL = "Horizontal";
         public const string VERTICAL = "Vertical";
         public const string JUMP = "Jump";
+        public const string SPRINT = "Sprint";
         public const string SHOOT = "Shoot";
     }
 }

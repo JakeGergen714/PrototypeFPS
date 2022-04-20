@@ -23,7 +23,6 @@ namespace UnityEngine
         {
             if (age++ > timeTolive)
             {
-                Debug.Log("Life manager removing: " + gameObject.GetHashCode());
                 Object.Destroy(gameObject);
             }
         }

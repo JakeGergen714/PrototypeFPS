@@ -2,8 +2,9 @@
 
 namespace player.move
 {
-    public interface LookChangeSubscriber
+    public interface RotationSubscriber
     {
-        public void lookChange(Quaternion
+        void lookChange(Quaternion rotation);
+        
     }
 }

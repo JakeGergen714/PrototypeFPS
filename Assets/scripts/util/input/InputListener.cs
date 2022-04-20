@@ -14,9 +14,14 @@ namespace DefaultNamespace
             return Input.GetAxis(InputAxis.VERTICAL);
         }
 
-        public static bool isJump()
+        public static float getJumpAxis()
         {
-            return Input.GetAxis(InputAxis.JUMP) > 0;
+            return Input.GetAxis(InputAxis.JUMP);
+        }
+
+        public static float getSprintAxis()
+        {
+            return Input.GetAxis(InputAxis.SPRINT);
         }
         
         public static bool isShoot()

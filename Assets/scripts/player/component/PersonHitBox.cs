@@ -9,23 +9,17 @@ namespace player
     public class PersonHitBox : MonoBehaviour
     {
         [SerializeField] private float damageMultipler;
-        [SerializeField] private Collider collider;
-
-        private void Awake()
-        {
-            collider = GetComponent<Collider>();
-        }
-
+        
         private void OnCollisionEnter(Collision other)
         {
-            IPersonOuchie thingThatOuches = other.gameObject.GetComponent<IPersonOuchie>();
+            PersonDamager thingThatOuches = other.gameObject.GetComponent<PersonDamager>();
             if (Object.ReferenceEquals(null, thingThatOuches))
             {
-                Debug.Log("null");
+                Debug.Log("Collided with something that doesnt damage persons. Fix the thing so i dont collide with:"+ other.gameObject.GetType());
                 return;
             }
-            Debug.Log("I got ouched by this much: " + thingThatOuches.getAmountOfOuch() + " then multiplied it by this much: " +
-                      damageMultipler + " to get: " + thingThatOuches.getAmountOfOuch() * damageMultipler);
+            Debug.Log("I got ouched by this much: " + thingThatOuches.getDamage() + " then multiplied it by this much: " +
+                      damageMultipler + " to get: " + thingThatOuches.getDamage() * damageMultipler);
         }
     }
 }

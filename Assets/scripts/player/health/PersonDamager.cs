@@ -1,7 +1,7 @@
 ﻿namespace player.health
 {
-    public interface IPersonOuchie
+    public interface PersonDamager
     {
-        float getAmountOfOuch();
+        float getDamage();
     }
 }
