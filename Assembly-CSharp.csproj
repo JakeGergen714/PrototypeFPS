@@ -41,25 +41,39 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\ViewController.cs" />
-     <Compile Include="Assets\scripts\player\component\Player.cs" />
+     <Compile Include="Assets\scripts\gamemode\Gamemode.cs" />
+     <Compile Include="Assets\scripts\gun\recoil\Recoil.cs" />
+     <Compile Include="Assets\scripts\gun\GunCSRecoil.cs" />
+     <Compile Include="Assets\scripts\gun\ViewController.cs" />
+     <Compile Include="Assets\scripts\player\Player.cs" />
      <Compile Include="Assets\scripts\object\LifeManager.cs" />
+     <Compile Include="Assets\scripts\player\health\HealthController.cs" />
+     <Compile Include="Assets\scripts\player\health\DamageSubscriber.cs" />
      <Compile Include="Assets\scripts\gun\bullet\Bullet.cs" />
-     <Compile Include="Assets\scripts\util\InterfaceUtility.cs" />
+     <Compile Include="Assets\scripts\gun\orientation\OrientationSubscriber.cs" />
+     <Compile Include="Assets\scripts\util\Utility.cs" />
+     <Compile Include="Assets\scripts\gamemode\JakeTDM\PlayerData.cs" />
      <Compile Include="Assets\scripts\player\move\PlayerLook.cs" />
+     <Compile Include="Assets\scripts\gamemode\pointarea\SingleColliderPointAreaImpl.cs" />
      <Compile Include="Assets\scripts\util\input\InputListener.cs" />
+     <Compile Include="Assets\scripts\gun\orientation\OrientationController.cs" />
      <Compile Include="Assets\scripts\gun\Gun.cs" />
      <Compile Include="Assets\scripts\player\health\PersonDamager.cs" />
-     <Compile Include="Assets\scripts\gun\recoil\Recoil.cs" />
+     <Compile Include="Assets\scripts\gun\recoil\BasicRecoil.cs" />
+     <Compile Include="Assets\scripts\gamemode\pointarea\PointArea.cs" />
      <Compile Include="Assets\scripts\util\input\InputAxis.cs" />
      <Compile Include="Assets\scripts\object\barrier\decal\BulletDecalSpawner.cs" />
+     <Compile Include="Assets\scripts\gamemode\JakeTDM\JakeTDM.cs" />
      <Compile Include="Assets\scripts\object\barrier\WallHitBox.cs" />
-     <Compile Include="Assets\scripts\player\shoot\PlayerShoot.cs" />
+     <Compile Include="Assets\scripts\player\health\DamagePublisher.cs" />
+     <Compile Include="Assets\scripts\gun\orientation\OrientationPublisher.cs" />
+     <Compile Include="Assets\scripts\gamemode\GameController.cs" />
      <Compile Include="Assets\scripts\util\input\InputKeys.cs" />
      <Compile Include="Assets\scripts\gun\IShoot.cs" />
      <Compile Include="Assets\scripts\player\move\RotationPublisher.cs" />
      <Compile Include="Assets\scripts\player\move\RotationSubscriber.cs" />
-     <Compile Include="Assets\scripts\player\component\PersonHitBox.cs" />
+     <Compile Include="Assets\scripts\player\health\PersonHitBox.cs" />
+     <Compile Include="Assets\scripts\gun\recoil\RecoilController.cs" />
      <None Include="Assets\objects\optic\sight.shader" />
      <None Include="Assets\Resources\BillingMode.json" />
      <Reference Include="UnityEngine">

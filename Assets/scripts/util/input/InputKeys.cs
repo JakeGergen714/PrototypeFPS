@@ -1,4 +1,6 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+
+namespace DefaultNamespace
 {
     public static class InputKeys
     {
@@ -11,6 +13,8 @@
         public static string JUMP_BUTTON = "Space";
         public static string RUN_BUTTON = "Shift";
         public static string MOUSE_0 = "mouse 0";
+        public static string MOUSE_1 = "mouse 1";
+        public static KeyCode RELOAD = KeyCode.R;
 
     }
 }

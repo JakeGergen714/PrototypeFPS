@@ -28,5 +28,15 @@ namespace DefaultNamespace
         {
             return Input.GetKey(InputKeys.MOUSE_0);
         }
+        
+        public static bool isAim()
+        {
+            return Input.GetKey(InputKeys.MOUSE_1);
+        }
+        
+        public static bool isReload()
+        {
+            return Input.GetKey(InputKeys.RELOAD);
+        }
     }
 }

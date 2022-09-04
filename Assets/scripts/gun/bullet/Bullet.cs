@@ -54,7 +54,7 @@ namespace gun.bullet
             if (didhit)
             {
                 var bulletDecalSpawners = new List<BulletDecalSpawner>();
-                InterfaceUtility.GetInterfaces(out bulletDecalSpawners, hit.transform.gameObject);
+                Utility.getInterfaces(out bulletDecalSpawners, hit.transform.gameObject);
                 foreach (BulletDecalSpawner spawner in bulletDecalSpawners)
                 {
                     spawner.spawnDecal(hit.point, hit.normal);

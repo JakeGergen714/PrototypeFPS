@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Numerics;
 using gun.bullet;
@@ -19,10 +19,10 @@ namespace DefaultNamespace.gun
         [SerializeField] private float WOBBLE = 0F;
         [SerializeField] private float INITIAL_VEL = 10F;
         
-        [SerializeField] private float SPAWN_OFFSET = .1F;
+        [SerializeField] private float SPAWN_OFFSET = 1000F;
         
         
-        private Recoil internalRecoil;
+        private BasicRecoil internalBasicRecoil;
         public Bullet prefab;
         [Range(0f, 90f)][SerializeField] float yRotationLimit = 88f;
         [Range(0.1f, 9f)][SerializeField] float externalRecoilSensitivity = 20f;
@@ -34,7 +34,7 @@ namespace DefaultNamespace.gun
         
         private void Awake()
         {
-            internalRecoil = this.GetComponent<Recoil>();
+            internalBasicRecoil = this.GetComponent<BasicRecoil>();
             parentCamera = GetComponentInParent<Camera>();
         }
 
@@ -63,7 +63,7 @@ namespace DefaultNamespace.gun
         {
             if (canShoot())
             {
-                List<Vector2> recoilList = internalRecoil.getRecoil();
+                List<Vector2> recoilList = internalBasicRecoil.getRecoil();
                 Ray centerOfScreen = parentCamera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
                 
                 Vector3 pos = centerOfScreen.origin;
@@ -71,8 +71,6 @@ namespace DefaultNamespace.gun
                 
                 Vector3 offset = SPAWN_OFFSET * transform.forward;
                 
-                Debug.Log("p: " + pos);
-                Debug.Log("d: " + dir);
                 
                 Bullet g = GameObject.Instantiate(prefab, pos + offset, transform.rotation);
                 g.setLoft(LOFT).setInitialVel(INITIAL_VEL).setWobble(WOBBLE);
@@ -106,4 +104,4 @@ namespace DefaultNamespace.gun
             }
         }
     }
-}
+}*/
