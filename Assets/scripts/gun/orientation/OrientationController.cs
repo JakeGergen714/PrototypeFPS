@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace DefaultNamespace.gun.orientation
@@ -15,11 +16,12 @@ namespace DefaultNamespace.gun.orientation
         
         private Queue<Vector2> orientationQueue = new Queue<Vector2>();
 
-        public int duration = 0;
+        public float duration = 0;
 
         private float t = 0;
         private void Update()
         {
+
             if (t > 1)
             {
                 target = Vector2.zero;

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ADG_Textures/Demo/DemoScene.unity
+    guid: d1a757d55021283408dc48331e5a401c
   m_configObjects: {}

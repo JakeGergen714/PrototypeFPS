@@ -3,6 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{1ce4f168-44d3-d2ce-991d-fe87c806bada}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Grammar", "QFSW.QC.Grammar.csproj", "{c20dc56c-20b1-0e78-4542-d8e33cfc0a87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC", "QFSW.QC.csproj", "{37bf3f3d-cd4b-8a05-89b6-90e20e9f92f0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Demo", "QFSW.QC.Demo.csproj", "{ca3438ca-10b6-bbda-4a25-cef344478b57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Parsers", "QFSW.QC.Parsers.csproj", "{7a2e3d47-75ae-2f23-15ee-c071adc1657d}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Extras", "QFSW.QC.Extras.csproj", "{f3a2b63c-1e71-f41f-0847-4e9d9fea10b2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Serializers", "QFSW.QC.Serializers.csproj", "{0f2c0765-acfd-1744-6633-2e548defb538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.UI", "QFSW.QC.UI.csproj", "{0977457c-0f17-9b6f-fff7-78af722c2131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Suggestors", "QFSW.QC.Suggestors.csproj", "{fcb5d67d-57fd-861c-2efb-1423a0e32bb3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.ScanRules", "QFSW.QC.ScanRules.csproj", "{c204b9b6-68f9-2825-ae1c-49123c725f38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.QGUI", "QFSW.QC.QGUI.csproj", "{07857f0f-0249-b8a5-a233-8aa9346d3d6d}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Editor", "QFSW.QC.Editor.csproj", "{dfbe3460-189a-a790-8fbf-38d46e59c9c0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QFSW.QC.Editor.Tools", "QFSW.QC.Editor.Tools.csproj", "{3c20b24d-e696-6980-9873-1115b114a8c7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{07b1cc98-061d-a2e9-45ec-e11fb0cf6ac4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,6 +36,32 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1ce4f168-44d3-d2ce-991d-fe87c806bada}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1ce4f168-44d3-d2ce-991d-fe87c806bada}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{c20dc56c-20b1-0e78-4542-d8e33cfc0a87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{c20dc56c-20b1-0e78-4542-d8e33cfc0a87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37bf3f3d-cd4b-8a05-89b6-90e20e9f92f0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37bf3f3d-cd4b-8a05-89b6-90e20e9f92f0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ca3438ca-10b6-bbda-4a25-cef344478b57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ca3438ca-10b6-bbda-4a25-cef344478b57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7a2e3d47-75ae-2f23-15ee-c071adc1657d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7a2e3d47-75ae-2f23-15ee-c071adc1657d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f3a2b63c-1e71-f41f-0847-4e9d9fea10b2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f3a2b63c-1e71-f41f-0847-4e9d9fea10b2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0f2c0765-acfd-1744-6633-2e548defb538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0f2c0765-acfd-1744-6633-2e548defb538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0977457c-0f17-9b6f-fff7-78af722c2131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0977457c-0f17-9b6f-fff7-78af722c2131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{fcb5d67d-57fd-861c-2efb-1423a0e32bb3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{fcb5d67d-57fd-861c-2efb-1423a0e32bb3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{c204b9b6-68f9-2825-ae1c-49123c725f38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{c204b9b6-68f9-2825-ae1c-49123c725f38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07857f0f-0249-b8a5-a233-8aa9346d3d6d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07857f0f-0249-b8a5-a233-8aa9346d3d6d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{dfbe3460-189a-a790-8fbf-38d46e59c9c0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{dfbe3460-189a-a790-8fbf-38d46e59c9c0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3c20b24d-e696-6980-9873-1115b114a8c7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3c20b24d-e696-6980-9873-1115b114a8c7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07b1cc98-061d-a2e9-45ec-e11fb0cf6ac4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07b1cc98-061d-a2e9-45ec-e11fb0cf6ac4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

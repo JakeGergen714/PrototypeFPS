@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - o
   - ADSPos
   - RestPos
+  - MainCam
   layers:
   - Default
   - TransparentFX

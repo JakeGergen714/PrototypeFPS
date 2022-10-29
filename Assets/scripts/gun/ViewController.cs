@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using DefaultNamespace;
 using DefaultNamespace.gun.orientation;
+using gun.viewbob;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace gun
 {
-    public class ViewController : MonoBehaviour, OrientationSubscriber
+    public class ViewController : MonoBehaviour, OrientationSubscriber, ViewBobSubscriber
     {
         public GameObject restWeaponPos;
         public GameObject aimWeaponPos;
@@ -13,12 +15,28 @@ namespace gun
         float interpolationRatio = .1f;
 
         private OrientationController orientationController;
+        private ViewBobController viewBobController;
+        
         private Queue<Quaternion> orientationQueue = new Queue<Quaternion>();
+        private Queue<Vector2> viewBobQueue = new Queue<Vector2>();
 
-        private void Awake()
+        public bool doSubscribeToOrientationController = false;
+        public bool doSubscribeToBobController = false;
+
+        private void Start()
         {
-            orientationController = gameObject.GetComponent<OrientationController>();
-            orientationController.subscribe(this);
+            orientationController = gameObject.GetComponentInParent<OrientationController>();
+            if (doSubscribeToOrientationController)
+            {
+                orientationController.subscribe(this);
+            }
+            
+          
+            if (doSubscribeToBobController)
+            {
+                viewBobController = gameObject.GetComponent<ViewBobController>();
+                viewBobController.subscribe(this);
+            }
         }
 
         void Update()
@@ -43,12 +61,24 @@ namespace gun
                 rot *= orientationRecoil;
             }
 
+            if (viewBobQueue.Count > 0)
+            {
+                Vector2 viewBob = viewBobQueue.Dequeue();
+                pos.y += viewBob.y;
+                pos.x += viewBob.x;
+            }
+
             transform.SetPositionAndRotation(pos, rot);
         }
 
         public void orientationChange(Quaternion rotation)
         {
             orientationQueue.Enqueue(rotation);
+        }
+
+        public void viewBobChange(Vector2 bob)
+        {
+            viewBobQueue.Enqueue(bob);
         }
     }
 }

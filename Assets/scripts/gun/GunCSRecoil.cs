@@ -4,6 +4,8 @@ using System.Numerics;
 using DefaultNamespace.gun.orientation;
 using gun.bullet;
 using player.move;
+using Unity.Netcode;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using util;
@@ -17,6 +19,7 @@ namespace DefaultNamespace.gun
     public class GunCSRecoil : MonoBehaviour
     {
         [SerializeField] private int FIRE_RATE = 10;
+        private int RELOAD_COOL_DOWN = 100;
         private int shotCoolDown = 0;
         
        
@@ -37,32 +40,38 @@ namespace DefaultNamespace.gun
         public int recoilDecayPerTick = 1;
         
         public static int recoilPatternSize = 10;
-        public List<Vector3> recoilPattern = new List<Vector3>(recoilPatternSize); //when currentRecoil is less than z, lerp in that direction
+        public List<Vector2> recoilPattern = new List<Vector2>(recoilPatternSize); //when currentRecoil is less than z, lerp in that direction
         private RecoilController recoilController;
         private float recoilT = 0f;
         public float recoilDuration = 0f;
         
-        private float currentOrientationRecoilCount = 0;
-        public float orientationRecoilIncrementPerTick = 1;
-        public float orientationRecoilDecayPerTick = .25f;
+        private int currentOrientationRecoilCount = 0;
+        public int orientationRecoilIncrementPerTick = 1;
+        public int orientationRecoilDecayPerTick = 1;
         public static int orientationRecoilPatternSize = 10;
-        public List<Vector3> orientationRecoilPattern = new List<Vector3>(orientationRecoilPatternSize);
+        public List<Vector2> orientationRecoilPattern = new List<Vector2>(orientationRecoilPatternSize);
         private OrientationController orientationController;
 
-        private Camera parentCamera;
+        private Camera mainCamera;
+        private const String mainCameraTag = "MainCam";
 
         private GameObject adsPos;
         private GameObject restPos;
-        private void Awake()
+
+        public bool debug = false;
+        private void Start()
         {
+
             bulletsLeftInMag = MAG_SIZE;
-            parentCamera = GetComponentInParent<Camera>();
+            Camera[] componentsInParent = this.GetComponentsInParent<Camera>();
+            mainCamera = componentsInParent[1];
             recoilController = this.GetComponent<RecoilController>();
-            orientationController = this.GetComponent<OrientationController>();
+            orientationController = this.GetComponentInChildren<OrientationController>();
         }
 
         private void FixedUpdate()
         {
+
             if (shotCoolDown > 0)
             {
                 shotCoolDown--;
@@ -73,19 +82,16 @@ namespace DefaultNamespace.gun
                 reload();
             }
             
-            if (InputListener.isShoot() & canShoot())
+            if (InputListener.isShoot() && canShoot())
             {
                 shoot();
             }
-            else if (canShoot())
+            else if (canShoot() | bulletsLeftInMag == 0)
             {
                 if (currentRecoilCount > 0)
                 {
                     currentRecoilCount -= recoilDecayPerTick;
-                    Vector2 reverseRecoil = this.getReverseRecoil();
-                   // recoilT -= Time.deltaTime / recoilDuration;
-                  
-                    recoilController.decreaseTargetOrientation(reverseRecoil);
+
                     if (currentRecoilCount < 0)
                     {
                         currentRecoilCount = 0;
@@ -95,10 +101,18 @@ namespace DefaultNamespace.gun
                 if (currentOrientationRecoilCount > 0)
                 {
                     currentOrientationRecoilCount -= orientationRecoilDecayPerTick;
+                    if (debug)
+                    {
+                        Debug.Log("Oreintation count " + currentOrientationRecoilCount);
+                    }
                 }
             }
 
-            Debug.Log("recoil Index: "+currentRecoilCount);
+            if (debug)
+            {
+                Debug.Log("recoil Index: "+currentRecoilCount);
+            }
+            
         }
 
        
@@ -108,7 +122,7 @@ namespace DefaultNamespace.gun
            
                 bulletsLeftInMag--;
                 //below code to spawn bullet should go in Bullet class in like spawnBullet(...) and this class can still have access to camera and do all the math to get posisition and just pass in vars 
-                Ray centerOfScreen = parentCamera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+                Ray centerOfScreen = mainCamera.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
                 Vector3 pos = centerOfScreen.origin;
                 Vector3 dir = centerOfScreen.direction;
                 Vector3 offset = SPAWN_OFFSET * transform.forward;
@@ -146,16 +160,13 @@ namespace DefaultNamespace.gun
 
         private Vector2 getOrientationRecoil()
         {
-            foreach (var orientatioRecoil in orientationRecoilPattern)
+            if (currentOrientationRecoilCount > orientationRecoilPatternSize)
             {
-                if (currentOrientationRecoilCount < orientatioRecoil.z)
-                {  
-                    currentOrientationRecoilCount += orientationRecoilIncrementPerTick;
-                    return new Vector2(orientatioRecoil.x, orientatioRecoil.y);
-                }
+                currentOrientationRecoilCount = 0;
             }
-            Debug.Log("Failure in getOrientationRecoil This should not be in console. last recoil.z in list needs to be max int");
-            return Vector2.zero;
+            Vector2 orientatioRecoil = orientationRecoilPattern[currentOrientationRecoilCount];
+            currentOrientationRecoilCount += orientationRecoilIncrementPerTick;
+            return new Vector2(orientatioRecoil.x, orientatioRecoil.y);
         }
     }
 }

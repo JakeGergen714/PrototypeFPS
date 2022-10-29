@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using player.move;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -20,7 +21,9 @@ namespace DefaultNamespace
         private Queue<Vector2> recoilQueue = new Queue<Vector2>();
 
         private Vector3 vel = Vector3.zero;
-        
+
+        public bool debug = false;
+
 
         private void FixedUpdate()
         {
@@ -32,7 +35,11 @@ namespace DefaultNamespace
             if (recoilQueue.Count > 0)
             {
                 target = recoilQueue.Dequeue();
-                Debug.Log("t should be 1: " + t);
+                if (debug)
+                {
+                    Debug.Log("t should be 1: " + t);
+                }
+               
                 t = 0;
             }
            
@@ -52,18 +59,17 @@ namespace DefaultNamespace
         {
             recoilQueue.Enqueue(target);
         }
-        
-        public void decreaseTargetOrientation(Vector2 mOrientation)
-        {
-            target -= mOrientation;
-        }
 
         private Vector2 doRecoil(Vector2 mtarget)
         {
             t += Time.deltaTime / duration;
             //Debug.Log("target: " + mtarget);
             interpolatedRecoil = Vector2.Lerp(Vector2.zero, mtarget, t);
-
+            if (t == 1)
+            {
+                target = Vector2.zero;
+            }
+            
             return interpolatedRecoil;
         }
         
