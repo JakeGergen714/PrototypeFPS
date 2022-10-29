@@ -152,12 +152,6 @@ namespace DefaultNamespace.gun
             return new Vector2(recoil.x, recoil.y);
         }
 
-        private Vector2 getReverseRecoil()
-        {
-            Vector2 recoil = recoilPattern[currentRecoilCount];
-            return new Vector2(recoil.x, recoil.y);
-        }
-
         private Vector2 getOrientationRecoil()
         {
             if (currentOrientationRecoilCount > orientationRecoilPatternSize)

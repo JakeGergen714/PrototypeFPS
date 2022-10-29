@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using DefaultNamespace;
 using DefaultNamespace.gun.orientation;
 using gun.viewbob;
 using player.move;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Purchasing;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace player
 {
@@ -93,6 +98,17 @@ namespace player
         private Vector3 targetVel;
         private Quaternion lookInput;
 
+        private float timer;
+        private int currentTick;
+
+        private const float SERVER_TICK_RATE = 30f;
+        private const float MIN_TIME_BETWEEN_TICKS = 1f / SERVER_TICK_RATE;
+        private const int BUFFER_SIZE = 1024;
+        
+        private PlayerInputPacket[] playerInputs = new PlayerInputPacket[BUFFER_SIZE];
+        private PlayerStatePacket[] playerStates = new PlayerStatePacket[BUFFER_SIZE];
+
+        private Queue<PlayerInputPacket> clientInputQueue = new Queue<PlayerInputPacket>(); //server queues input recieved from client
         void Start()
         {
             recoilController = GetComponentInChildren<RecoilController>();
@@ -118,13 +134,19 @@ namespace player
 
         void Update()
         {
+            timer += Time.deltaTime;
+            
+            while (timer >= MIN_TIME_BETWEEN_TICKS)
+            {
+                timer -= MIN_TIME_BETWEEN_TICKS;
+                HandleTick();
+                currentTick++;
+            }
+            
             playerInput = getAxisInput();
             pressJump = InputListener.getJumpAxis() > 0;
             pressSprint = InputListener.getSprintAxis() > 0;
-           
-            lookInput = look();
-            
-            transform.localRotation = lookInput;
+            transform.localRotation = look();
 
             doWeaponBounce();
         }
@@ -248,14 +270,12 @@ namespace player
             {
                 currentJumpCoolDown--;
             }
-            
+
+            playerInputs[0] = new PlayerInputPacket(playerInput, pressJump, pressSprint,0 );//TODO make this a circular input buffer using fixed tickrate as index
             move(playerInput, pressJump, pressSprint);
-            
+
+            playerStates[0] = new PlayerStatePacket(transform.position, 0);
         }
-
-
-        // Start is called before the first frame update
-
 
         private Quaternion look()
         {
