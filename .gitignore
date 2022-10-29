@@ -7,3 +7,14 @@ Packages/
 ProjectSettings/
 Temp/
 UserSettings/
+
+Assets/ADG_Textures
+Assets/Ishikawa1116
+Assets/objects
+Assets/playerv1
+Assets/Plugins
+Assets/Resources
+Assets/Scenes
+Assets/TextMesh Pro
+*.meta
+*.asset

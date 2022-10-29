@@ -139,7 +139,7 @@ namespace player
             while (timer >= MIN_TIME_BETWEEN_TICKS)
             {
                 timer -= MIN_TIME_BETWEEN_TICKS;
-                HandleTick();
+                //HandleTick();
                 currentTick++;
             }
             
