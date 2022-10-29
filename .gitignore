@@ -1,0 +1,9 @@
+build/
+buildies/
+Library/
+Logs/
+obj/
+Packages/
+ProjectSettings/
+Temp/
+UserSettings/
